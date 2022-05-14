@@ -8,15 +8,23 @@ using namespace std;
 
 enum FormatosDeVideo
 {
-
+  Terror,
+  Suspense,
+  Acao,
+  Drama,
+  Documentario,
+  Comedia
 };
 
 enum GenerosDeFilme
 {
-
+  AVI,
+  MKV,
+  MP4,
+  FLV
 };
 
-class Filme
+class Filme : public Midia
 {
   vector<FormatosDeVideo> formatoVideo;
   vector<GenerosDeFilme> generoFilme;
@@ -31,20 +39,20 @@ public:
 
   void setFormatoDeVideo(vector<FormatosDeVideo> formatoVideo)
   {
-    formatoVideo = formatoVideo;
+    this->formatoVideo = formatoVideo;
   }
   vector<FormatosDeVideo> getFormatoDeVideo()
   {
-    return formatoVideo;
+    return this->formatoVideo;
   }
 
   void setGeneroDeFilme(vector<GenerosDeFilme> generoFilme)
   {
-    generoFilme = generoFilme;
+    this->generoFilme = generoFilme;
   }
   vector<GenerosDeFilme> getGeneroDeFilme()
   {
-    return generoFilme;
+    return this->generoFilme;
   }
 };
 

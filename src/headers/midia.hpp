@@ -1,4 +1,4 @@
-#ifndef Midia_HPP // Lembra disso
+#ifndef Midia_HPP
 #define Midia_HPP
 
 #include <iostream>
@@ -8,7 +8,6 @@ using namespace std;
 
 class Midia
 {
-
   string titulo;
   vector<string> artistas;
   int data;
@@ -50,51 +49,51 @@ public:
 
   void setArtistas(vector<string> artistas)
   {
-    artistas = artistas;
+    this->artistas = artistas;
   }
   vector<string> getArtistas()
   {
-    return artistas;
+    return this->artistas;
   }
 
   void setData(int data)
   {
-    data = data;
+    this->data = data;
   }
   int getData()
   {
-    return data;
+    return this->data;
   }
 
   void setDuracao(int duracao)
   {
-    duracao = duracao;
+    this->duracao = duracao;
   }
   int getDuracao()
   {
-    return duracao;
+    return this->duracao;
   }
 
   void setKeywords(vector<string> keywords)
   {
-    keywords = keywords;
+    this->keywords = keywords;
   }
   vector<string> getKeywords()
   {
-    return keywords;
+    return this->keywords;
   }
 
   void setNumeroAcessos(int numeroAcessos)
   {
-    numeroAcessos = numeroAcessos;
+    this->numeroAcessos = numeroAcessos;
   }
   int getNumeroAcessos()
   {
-    return numeroAcessos;
+    return this->numeroAcessos;
   }
   void incrementNumeroAcessos(int numeroAcessos)
   {
-    int atualNumeroAcessos = getNumeroAcessos() + 1;
+    this->numeroAcessos = getNumeroAcessos() + numeroAcessos;
   }
 };
 

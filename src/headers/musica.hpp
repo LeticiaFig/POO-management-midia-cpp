@@ -9,15 +9,23 @@ using namespace std;
 
 enum FormatoDeAudio
 {
+  Null_AudioFormat,
   mp3,
-  AAC
+  AAC,
+  OGG,
+  WMA
 };
 
 enum GeneroDeMusica
 {
+  Null_AudioGenre,
   Rock,
-  Heavy_Metal
-
+  Heavy_Metal,
+  Eletronica,
+  Blues,
+  Jazz,
+  Pop,
+  Samba
 };
 
 class Musica : public Midia
@@ -41,20 +49,20 @@ public:
 
   void setFormatoDeAudio(vector<FormatoDeAudio> formatoAudio)
   {
-    formatoAudio = formatoAudio;
+    this->formatoAudio = formatoAudio;
   }
   vector<FormatoDeAudio> getFormatoDeAudio()
   {
-    return formatoAudio;
+    return this->formatoAudio;
   }
 
   void setGeneroDeMusica(vector<GeneroDeMusica> generoMusica)
   {
-    generoMusica = generoMusica;
+    this->generoMusica = generoMusica;
   }
   vector<GeneroDeMusica> getGeneroDeMusica()
   {
-    return generoMusica;
+    return this->generoMusica;
   }
 
   void print()
