@@ -8,20 +8,22 @@ using namespace std;
 
 enum FormatosDeVideo
 {
+  Null_VideoFormat,
+  AVI,
+  MKV,
+  MP4,
+  FLV
+};
+
+enum GenerosDeFilme
+{
+  Null_MovieGenre,
   Terror,
   Suspense,
   Acao,
   Drama,
   Documentario,
   Comedia
-};
-
-enum GenerosDeFilme
-{
-  AVI,
-  MKV,
-  MP4,
-  FLV
 };
 
 class Filme : public Midia
