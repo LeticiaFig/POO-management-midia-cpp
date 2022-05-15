@@ -90,4 +90,34 @@ void listArtistasByFilmes(vector<Filme> filmes)
   printArtistasFilmeList(artistas);
 }
 
+void countFilmesByGenero(vector<Filme> filmes)
+{
+  map<GenerosDeFilme, int> counter;
+  vector<GenerosDeFilme> generos;
+
+  vector<string> generoDeFilme;
+  generoDeFilme.push_back("Null_MovieGenre");
+  generoDeFilme.push_back("Terror");
+  generoDeFilme.push_back("Suspense");
+  generoDeFilme.push_back("Acao");
+  generoDeFilme.push_back("Drama");
+  generoDeFilme.push_back("Documentario");
+  generoDeFilme.push_back("Comedia");
+
+  for (int i = 0; i < filmes.size(); i++)
+  {
+    generos = filmes[i].getGeneroDeFilme();
+    for_each(begin(generos), end(generos), [&](GenerosDeFilme const &s)
+             { ++counter[s]; });
+  }
+
+  cout << endl
+       << "Contagem de gêneros de filmes" << endl
+       << endl;
+  for (auto const &pair : counter)
+  {
+    cout << generoDeFilme[pair.first] << ": " << pair.second << endl;
+  }
+}
+
 #endif

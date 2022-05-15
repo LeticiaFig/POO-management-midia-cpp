@@ -5,6 +5,7 @@
 #include <algorithm>
 #include "headers/musica.hpp"
 #include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -90,6 +91,37 @@ void listArtistasByMusicas(vector<Musica> musicas)
   artistas.erase(unique(artistas.begin(), artistas.end()), artistas.end());
 
   printArtistasMusicaList(artistas);
+}
+
+void countMusicasByGenero(vector<Musica> musicas)
+{
+  map<GeneroDeMusica, int> counter;
+  vector<GeneroDeMusica> generos;
+
+  vector<string> generosDeMusica;
+  generosDeMusica.push_back("Null_AudioGenre");
+  generosDeMusica.push_back("Rock");
+  generosDeMusica.push_back("Heavy_Metal");
+  generosDeMusica.push_back("Eletronica");
+  generosDeMusica.push_back("Blues");
+  generosDeMusica.push_back("Jazz");
+  generosDeMusica.push_back("Pop");
+  generosDeMusica.push_back("Samb");
+
+  for (int i = 0; i < musicas.size(); i++)
+  {
+    generos = musicas[i].getGeneroDeMusica();
+    for_each(begin(generos), end(generos), [&](GeneroDeMusica const &s)
+             { ++counter[s]; });
+  }
+
+  cout << endl
+       << "Contagem de gêneros musicais" << endl
+       << endl;
+  for (auto const &pair : counter)
+  {
+    cout << generosDeMusica[pair.first] << ": " << pair.second << endl;
+  }
 }
 
 #endif

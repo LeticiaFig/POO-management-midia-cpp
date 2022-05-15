@@ -238,18 +238,23 @@ void tela4()
 
     // Dados para teste
 
-    // vector<GeneroDeMusica> generoDeMusica;
-    // vector<FormatoDeAudio> formatoDeAudio;
-    // vector<GenerosDeFilme> generoDeFilme;
-    // vector<FormatosDeVideo> formatoDeVideo;
-    // vector<string> artistas;
-    // vector<string> keywords;
-    // artistas.push_back("c");
-    // artistas.push_back("a");
-    // artistas.push_back("b");
-    // musicas.push_back(Musica(formatoDeAudio, generoDeMusica, "Title", artistas, 123, 0, keywords, 0));
-    // musicas.push_back(Musica(formatoDeAudio, generoDeMusica, "ATitle", artistas, 123, 0, keywords, 0));
-    // filmes.push_back(Filme(formatoDeVideo, generoDeFilme, "ATitle", artistas, 123, 0, keywords, 0));
+    vector<GeneroDeMusica> generoDeMusica;
+    vector<GeneroDeMusica> generoDeMusica1;
+    vector<FormatoDeAudio> formatoDeAudio;
+    vector<GenerosDeFilme> generoDeFilme;
+    vector<FormatosDeVideo> formatoDeVideo;
+    vector<string> artistas;
+    vector<string> keywords;
+    artistas.push_back("c");
+    artistas.push_back("a");
+    artistas.push_back("b");
+    generoDeMusica.push_back(Rock);
+    generoDeMusica.push_back(Heavy_Metal);
+    generoDeMusica1.push_back(Heavy_Metal);
+    generoDeMusica1.push_back(Blues);
+    musicas.push_back(Musica(formatoDeAudio, generoDeMusica1, "Title", artistas, 123, 0, keywords, 0));
+    musicas.push_back(Musica(formatoDeAudio, generoDeMusica, "ATitle", artistas, 123, 0, keywords, 0));
+    filmes.push_back(Filme(formatoDeVideo, generoDeFilme, "ATitle", artistas, 123, 0, keywords, 0));
 
     switch (acao)
     {
@@ -275,13 +280,13 @@ void tela4()
       listAllArtistas(filmes, musicas);
       break;
 
-      // case '6':
-      //   // todo contagem de musicas por genero
-      //   break;
+    case '6':
+      countMusicasByGenero(musicas);
+      break;
 
-      // case '7':
-      //   // todo listagem de filmes por genero
-      //   break;
+    case '7':
+      countFilmesByGenero(filmes);
+      break;
 
     default:
       break;
