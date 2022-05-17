@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include "headers/filme.hpp"
 #include <map>
 #include <vector>
 

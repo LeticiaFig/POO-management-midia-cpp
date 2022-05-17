@@ -4,6 +4,10 @@
 #include "headers/musica.hpp"
 #include "headers/filme.hpp"
 
+#include "musica.cpp"
+#include "filme.cpp"
+#include "prompt.cpp"
+
 #include <map>
 #include <vector>
 using namespace std;
@@ -191,5 +195,23 @@ void remocaoMidia(vector<Filme> filmes, vector<Musica> musicas, int midiaType, i
 
   default:
     break;
+  }
+}
+
+void cadastroMidia(vector<Filme> filmes, vector<Musica> musicas)
+{
+  char acao;
+  while (true)
+  {
+    cout << "(1) Cadastro de musica\n"
+         << "(2) Cadastro de filme\n"
+         << "(3) Voltar\n";
+    cin >> acao;
+    if (acao == '3')
+      break;
+    else if (acao == '1')
+      musicas.push_back(Musica(promptFormatoDeAudio(), promptGeneroDeMusica(), promptTitulo(), promptArtistas(), promptData(), promptDuracao(), promptKeywords(), 0));
+    else if (acao == '2')
+      filmes.push_back(Filme(promptFormatoDeVideo(), promptGeneroDeFilme(), promptTitulo(), promptArtistas(), promptData(), promptDuracao(), promptKeywords(), 0));
   }
 }
