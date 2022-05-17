@@ -151,21 +151,20 @@ void listAllByData(vector<Filme> filmes, vector<Musica> musicas, int anoDeLancam
   listByData<Filme>(filmes, anoDeLancamento, "filme");
 }
 
+void listAllOrderByData(vector<Filme> filmes, vector<Musica> musicas, bool desc)
+{
+  listOrderByData<Filme>(filmes, "filme", desc);
+  listOrderByData<Musica>(musicas, "musica", desc);
+}
+
 void listAllArtistas(vector<Filme> filmes, vector<Musica> musicas)
 {
   listArtistasByT<Musica>(musicas, "musica");
   listArtistasByT<Filme>(filmes, "filme");
 }
 
-void remocaoMidia()
+void remocaoMidia(vector<Filme> filmes, vector<Musica> musicas, int midiaType, int midiaToRemove)
 {
-  listOrderByData<Filme>(filmes, "filme", true);
-  listOrderByData<Musica>(musicas, "musica", true);
-
-  int midiaType = promptMidiaType();
-  int midiaToRemove = promptRemoveMidia();
-
-  // todo: alterar a função para retornar decrescente
   switch (midiaType)
   {
   case '1':

@@ -306,9 +306,14 @@ void telaInicial()
     if (acao == '5')
       break;
     else if (acao == '1')
-      cadastroMidia(); // 1.1 - Cadastro
-    else if (acao == '2')
-      remocaoMidia(); // 1.2 - Remoção
+      cadastroMidia();    // 1.1 - Cadastro
+    else if (acao == '2') // 1.2 - Remoção de mídias
+    {
+      listOrderByData<Filme>(filmes, "filme", true);
+      int midiaType = promptMidiaType();
+      int midiaToRemove = promptRemoveMidia();
+      remocaoMidia(filmes, musicas, midiaType, midiaToRemove);
+    }
     else if (acao == '3')
       tela2();
     else if (acao == '4')
