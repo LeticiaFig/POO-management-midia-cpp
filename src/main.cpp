@@ -5,6 +5,8 @@
 #include "filme.cpp"
 
 #include <vector>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 vector<Musica> musicas;
@@ -25,47 +27,61 @@ bool promptYesOrNo(string str)
     }
   }
 }
-template<typename T>
-T promptObject(string str) {
-    T object;
-    cout << str;
-    cin >> object;
-    return object;
+template <typename T>
+T promptObject(string str)
+{
+  T object;
+  cout << str;
+  cin >> object;
+  return object;
 }
-template<typename T>
-vector<T> promptObjects(string str, string str2) {
-    bool flag = true;
-    vector<T> objects;
-    while (flag) {
-        objects.push_back(promptObject<T>(str));
-        flag = promptYesOrNo(str2);
-    }
-    return objects;
+template <typename T>
+vector<T> promptObjects(string str, string str2)
+{
+  bool flag = true;
+  vector<T> objects;
+  while (flag)
+  {
+    objects.push_back(promptObject<T>(str));
+    flag = promptYesOrNo(str2);
+  }
+  return objects;
 }
 string promptTitulo()
 {
-    return promptObject<string>("Digite o titulo do(a) filme/musica: ");
+  return promptObject<string>("Digite o titulo do(a) filme/musica: ");
 }
 int promptData()
 {
-    return promptObject<int>("Digite a data quando foi feito o(a) filme/musica (formato: 03/05/2022 = 3052022): ");
+  return promptObject<int>("Digite a data quando foi feito o(a) filme/musica (formato: 03/05/2022 = 3052022): ");
 }
 int promptAnoDeLancamento()
 {
-    return promptObject<int>("Digite o ano de lançamento que deseja buscar: ");
+  return promptObject<int>("Digite o ano de lançamento que deseja buscar: ");
 }
 int promptDuracao()
 {
-    return promptObject<int>("Digite a duracao do(a) filme/musica (em segundos): ");
+  return promptObject<int>("Digite a duracao do(a) filme/musica (em segundos): ");
 }
 vector<string> promptKeywords()
 {
-    return promptObjects<string>("Digite a keyword que voce gostaria de associar a(o) filme/musica: ", "Ha mais outra keyword? (s/n): ");
+  return promptObjects<string>("Digite a keyword que voce gostaria de associar a(o) filme/musica: ", "Ha mais outra keyword? (s/n): ");
 }
 vector<string> promptArtistas()
 {
-    return promptObjects<string>("Digite o nome do artista do(a) filme/musica: ", "Ha mais outro artista? (s/n): ");
+  return promptObjects<string>("Digite o nome do artista do(a) filme/musica: ", "Ha mais outro artista? (s/n): ");
 }
+
+int promptMidiaType()
+{
+  return promptObject<int>("Digite qual o tipo de mídia que deseja remover: \n\n(1)Filme \n(2)Música \n(3)Voltar");
+}
+
+int promptRemoveMidia()
+{
+  return promptObject<int>("Selecione o número da lista acima correspondente à mídia que deseja remover ou 0(zero) para cancelar a operação: ");
+}
+
 FormatoDeAudio stringToFormatoDeAudio(string str)
 {
   if (str == "mp3")
@@ -133,10 +149,11 @@ vector<GeneroDeMusica> promptGeneroDeMusica()
   {
     GeneroDeMusica genero;
     genero = stringToGeneroDeMusica(promptObject<string>("Digite o genero da musica: "));
-    if (genero == GeneroDeMusica::Null_AudioGenre) {
-        cout << "Genero invalido\n";
-        continue;
-    } 
+    if (genero == GeneroDeMusica::Null_AudioGenre)
+    {
+      cout << "Genero invalido\n";
+      continue;
+    }
     generos.push_back(genero);
     flag = promptYesOrNo("Ha mais outro genero? (s/n): ");
   }
@@ -151,9 +168,10 @@ vector<GenerosDeFilme> promptGeneroDeFilme()
   {
     GenerosDeFilme genero;
     genero = stringToGeneroDeFilme(promptObject<string>("Digite o genero do filme: "));
-    if (genero == GenerosDeFilme::Null_MovieGenre) {
-        cout << "Genero invalido\n";
-        continue;
+    if (genero == GenerosDeFilme::Null_MovieGenre)
+    {
+      cout << "Genero invalido\n";
+      continue;
     }
     generos.push_back(genero);
     flag = promptYesOrNo("Ha mais outro genero? (s/n): ");
@@ -169,9 +187,10 @@ vector<FormatoDeAudio> promptFormatoDeAudio()
   {
     FormatoDeAudio audio;
     audio = stringToFormatoDeAudio(promptObject<string>("Digite o formato de audio desta musica: "));
-    if (audio == FormatoDeAudio::Null_AudioFormat) {
-        cout << "Formato invalido\n";
-        continue;
+    if (audio == FormatoDeAudio::Null_AudioFormat)
+    {
+      cout << "Formato invalido\n";
+      continue;
     }
     audios.push_back(audio);
     flag = promptYesOrNo("Ha mais outro formato de audio? (s/n): ");
@@ -186,18 +205,73 @@ vector<FormatosDeVideo> promptFormatoDeVideo()
   {
     FormatosDeVideo video;
     video = stringToFormatoDeVideo(promptObject<string>("Digite o formato de video deste filme: "));
-    if (video == FormatosDeVideo::Null_VideoFormat) {
-        cout << "Formato invalido\n";
-        continue;
+    if (video == FormatosDeVideo::Null_VideoFormat)
+    {
+      cout << "Formato invalido\n";
+      continue;
     }
     videos.push_back(video);
     flag = promptYesOrNo("Ha mais outro formato de video? (s/n): ");
   }
   return videos;
 }
+
 void remocaoMidia()
 {
+
+  vector<GeneroDeMusica> generoDeMusica;
+  vector<GeneroDeMusica> generoDeMusica1;
+  vector<FormatoDeAudio> formatoDeAudio;
+  vector<GenerosDeFilme> generoDeFilme;
+  vector<FormatosDeVideo> formatoDeVideo;
+  vector<string> artistas;
+  vector<string> keywords;
+  artistas.push_back("c");
+  artistas.push_back("a");
+  artistas.push_back("b");
+  generoDeMusica.push_back(Rock);
+  generoDeMusica.push_back(Heavy_Metal);
+  generoDeMusica1.push_back(Heavy_Metal);
+  generoDeMusica1.push_back(Blues);
+  musicas.push_back(Musica(formatoDeAudio, generoDeMusica1, "Title", artistas, 123, 0, keywords, 0));
+  musicas.push_back(Musica(formatoDeAudio, generoDeMusica, "ATitle", artistas, 123, 0, keywords, 0));
+  filmes.push_back(Filme(formatoDeVideo, generoDeFilme, "ATitle", artistas, 123, 0, keywords, 0));
+
+  listFilmesOrderByData(filmes);
+  listMusicasOrderByData(musicas);
+
+  int midiaType = promptMidiaType();
+  int midiaToRemove = promptRemoveMidia();
+
+  switch (midiaType)
+  {
+  case '1':
+    if (midiaToRemove > 0 && midiaToRemove < filmes.size())
+    {
+      cout << "O filme selecionado é inválido. Por favor, tente novamente!";
+      break;
+    }
+    filmes.erase(filmes.begin() + midiaToRemove - 1);
+    cout << "Filme " << midiaToRemove << " removido com sucesso!";
+
+    break;
+
+  case '2':
+    if (midiaToRemove > 0 && midiaToRemove < filmes.size())
+    {
+      cout << "A música selecionada é inválida. Por favor, tente novamente!";
+      break;
+    }
+    musicas.erase(musicas.begin() + midiaToRemove - 1);
+    cout << "Música " << midiaToRemove << " removida com sucesso!";
+
+    break;
+
+  default:
+    break;
+  }
 }
+
 void tela2()
 {
   char acao;
@@ -215,21 +289,21 @@ void tela2()
     cin >> acao;
 
     if (acao == '8')
-        break;
+      break;
     else if (acao == '1')
-        listAllByTitulo(filmes, musicas); //2.1 - Listagem completa
+      listAllByTitulo(filmes, musicas); // 2.1 - Listagem completa
     else if (acao == '2')
-        listMusicasOrderByData(musicas);  //2.2 - Listagem de musicas
+      listMusicasOrderByData(musicas); // 2.2 - Listagem de musicas
     else if (acao == '3')
-        listFilmesOrderByData(filmes);    //2.3 - Listagem de filmes
+      listFilmesOrderByData(filmes); // 2.3 - Listagem de filmes
     else if (acao == '4')
-        listAllByData(filmes, musicas, promptAnoDeLancamento()); //2.4 - Listagem por data
+      listAllByData(filmes, musicas, promptAnoDeLancamento()); // 2.4 - Listagem por data
     else if (acao == '5')
-        listAllArtistas(filmes, musicas); //2.5 - Listagem de Artistas
+      listAllArtistas(filmes, musicas); // 2.5 - Listagem de Artistas
     else if (acao == '6')
-        countMusicasByGenero(musicas);    //2.6 - Contagem de musicas por genero
+      countMusicasByGenero(musicas); // 2.6 - Contagem de musicas por genero
     else if (acao == '7')
-        countFilmesByGenero(filmes);      //2.7 - Contagem de filmes por genero
+      countFilmesByGenero(filmes); // 2.7 - Contagem de filmes por genero
   }
 }
 
@@ -255,7 +329,7 @@ void tela3()
     }
     else if (acao == '3')
     {
-      //todo 2.10 - Busca por keyword
+      // todo 2.10 - Busca por keyword
     }
   }
 }
@@ -290,19 +364,19 @@ void telaInicial()
     if (acao == '5')
       break;
     else if (acao == '1')
-        cadastroMidia(); //1.1 - Cadastro
+      cadastroMidia(); // 1.1 - Cadastro
     else if (acao == '2')
-        remocaoMidia();  //1.2 - Remoção
+      remocaoMidia(); // 1.2 - Remoção
     else if (acao == '3')
-        tela2();
+      tela2();
     else if (acao == '4')
-        tela3();
+      tela3();
   }
 }
 
 int main()
 {
-  cout << "Bem-vindo ao nosso Sistema de Gerenciamento de Midias\n";
+  cout << "Bem-vindo ao nosso Sistema de Gerenciamento de Midias\n\n";
   telaInicial();
   return 0;
 };
