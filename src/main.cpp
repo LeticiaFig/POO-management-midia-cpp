@@ -28,9 +28,7 @@ void tela2()
          << "(8) Voltar\n\n";
     cin >> acao;
 
-    if (acao == '8')
-      break;
-    else if (acao == '1')
+    if (acao == '1')
       listAllByTitulo(filmes, musicas); // 2.1 - Listagem completa
     else if (acao == '2')
       listOrderByData<Musica>(musicas, "musica", false); // 2.2 - Listagem de musicas
@@ -44,6 +42,8 @@ void tela2()
       countMusicasByGenero(musicas); // 2.6 - Contagem de musicas por genero
     else if (acao == '7')
       countFilmesByGenero(filmes); // 2.7 - Contagem de filmes por genero
+    else if (acao == '8')
+      break;
   }
 }
 
@@ -57,11 +57,10 @@ void tela3()
          << "(3) Busca por \'keyword\' \n"
          << "(4) Voltar\n\n";
     cin >> acao;
-    if (acao == '4')
-      break;
-    else if (acao == '1')
+
+    if (acao == '1')
     {
-      chooseRandomFilme(filmes);
+      chooseRandomFilme(filmes); // 2.8 - Escolha aleatória de filme
     }
     else if (acao == '2')
     {
@@ -71,6 +70,8 @@ void tela3()
     {
       // todo 2.10 - Busca por keyword
     }
+    else if (acao == '4')
+      break;
   }
 }
 
@@ -90,12 +91,12 @@ void telaInicial()
       break;
     else if (acao == '1')
       cadastroMidia(filmes, musicas); // 1.1 - Cadastro
-    else if (acao == '2')             // 1.2 - Remoção de mídias
+    else if (acao == '2')
     {
       listAllOrderByData(filmes, musicas, true);
       int midiaType = promptMidiaType();
       int midiaToRemove = promptRemoveMidia();
-      remocaoMidia(filmes, musicas, midiaType, midiaToRemove);
+      remocaoMidia(filmes, musicas, midiaType, midiaToRemove); // 1.2 - Remoção de mídias
     }
     else if (acao == '3')
       tela2();
