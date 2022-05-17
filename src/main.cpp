@@ -19,11 +19,11 @@ void tela2()
   {
     cout << endl
          << "(1) Listagem Completa\n"
-         << "(2) Listagem de musicas\n"
+         << "(2) Listagem de músicas\n"
          << "(3) Listagem de filmes\n"
          << "(4) Listagem por data\n"
          << "(5) Listagem de artistas\n"
-         << "(6) Contagem de musicas por genero\n"
+         << "(6) Contagem de músicas por genero\n"
          << "(7) Contagem de filmes por genero\n"
          << "(8) Voltar\n\n";
     cin >> acao;
