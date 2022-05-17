@@ -5,8 +5,6 @@
 #include "filme.cpp"
 
 #include <vector>
-#include <bits/stdc++.h>
-
 using namespace std;
 
 vector<Musica> musicas;
@@ -71,17 +69,6 @@ vector<string> promptArtistas()
 {
   return promptObjects<string>("Digite o nome do artista do(a) filme/musica: ", "Ha mais outro artista? (s/n): ");
 }
-
-int promptMidiaType()
-{
-  return promptObject<int>("Digite qual o tipo de mídia que deseja remover: \n\n(1)Filme \n(2)Música \n(3)Voltar");
-}
-
-int promptRemoveMidia()
-{
-  return promptObject<int>("Selecione o número da lista acima correspondente à mídia que deseja remover ou 0(zero) para cancelar a operação: ");
-}
-
 FormatoDeAudio stringToFormatoDeAudio(string str)
 {
   if (str == "mp3")
@@ -216,42 +203,14 @@ vector<FormatosDeVideo> promptFormatoDeVideo()
   return videos;
 }
 
-void remocaoMidia()
+int promptMidiaType()
 {
-  listFilmesOrderByData(filmes);
-  listMusicasOrderByData(musicas);
+  return promptObject<int>("Digite qual o tipo de mídia que deseja remover: \n\n(1)Filme \n(2)Música \n(3)Voltar");
+}
 
-  int midiaType = promptMidiaType();
-  int midiaToRemove = promptRemoveMidia();
-
-  // todo: alterar a função para retornar decrescente
-  switch (midiaType)
-  {
-  case '1':
-    if (midiaToRemove > 0 && midiaToRemove < filmes.size())
-    {
-      cout << "O filme selecionado é inválido. Por favor, tente novamente!";
-      break;
-    }
-    filmes.erase(filmes.begin() + midiaToRemove - 1);
-    cout << "Filme " << midiaToRemove << " removido com sucesso!";
-
-    break;
-
-  case '2':
-    if (midiaToRemove > 0 && midiaToRemove < filmes.size())
-    {
-      cout << "A música selecionada é inválida. Por favor, tente novamente!";
-      break;
-    }
-    musicas.erase(musicas.begin() + midiaToRemove - 1);
-    cout << "Música " << midiaToRemove << " removida com sucesso!";
-
-    break;
-
-  default:
-    break;
-  }
+int promptRemoveMidia()
+{
+  return promptObject<int>("Selecione o número da lista acima correspondente à mídia que deseja remover ou 0(zero) para cancelar a operação: ");
 }
 
 void tela2()
@@ -275,9 +234,9 @@ void tela2()
     else if (acao == '1')
       listAllByTitulo(filmes, musicas); // 2.1 - Listagem completa
     else if (acao == '2')
-      listMusicasOrderByData(musicas); // 2.2 - Listagem de musicas
+      listOrderByData<Musica>(musicas, "musica", false); // 2.2 - Listagem de musicas
     else if (acao == '3')
-      listFilmesOrderByData(filmes); // 2.3 - Listagem de filmes
+      listOrderByData<Filme>(filmes, "filme", false); // 2.3 - Listagem de filmes
     else if (acao == '4')
       listAllByData(filmes, musicas, promptAnoDeLancamento()); // 2.4 - Listagem por data
     else if (acao == '5')
