@@ -64,6 +64,10 @@ public:
   {
     return this->data;
   }
+  int getAno()
+  {
+    return this->data % 10000;
+  }
 
   void setDuracao(int duracao)
   {

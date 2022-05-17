@@ -218,31 +218,13 @@ vector<FormatosDeVideo> promptFormatoDeVideo()
 
 void remocaoMidia()
 {
-
-  vector<GeneroDeMusica> generoDeMusica;
-  vector<GeneroDeMusica> generoDeMusica1;
-  vector<FormatoDeAudio> formatoDeAudio;
-  vector<GenerosDeFilme> generoDeFilme;
-  vector<FormatosDeVideo> formatoDeVideo;
-  vector<string> artistas;
-  vector<string> keywords;
-  artistas.push_back("c");
-  artistas.push_back("a");
-  artistas.push_back("b");
-  generoDeMusica.push_back(Rock);
-  generoDeMusica.push_back(Heavy_Metal);
-  generoDeMusica1.push_back(Heavy_Metal);
-  generoDeMusica1.push_back(Blues);
-  musicas.push_back(Musica(formatoDeAudio, generoDeMusica1, "Title", artistas, 123, 0, keywords, 0));
-  musicas.push_back(Musica(formatoDeAudio, generoDeMusica, "ATitle", artistas, 123, 0, keywords, 0));
-  filmes.push_back(Filme(formatoDeVideo, generoDeFilme, "ATitle", artistas, 123, 0, keywords, 0));
-
   listFilmesOrderByData(filmes);
   listMusicasOrderByData(musicas);
 
   int midiaType = promptMidiaType();
   int midiaToRemove = promptRemoveMidia();
 
+  // todo: alterar a função para retornar decrescente
   switch (midiaType)
   {
   case '1':
@@ -312,8 +294,8 @@ void tela3()
   char acao;
   while (true)
   {
-    cout << "(1) Escolha aleatoria de filme\n"
-         << "(2) Criacao de playlist de musicas\n"
+    cout << "(1) Escolha aleatória de filme\n"
+         << "(2) Criacao de playlist de músicas\n"
          << "(3) Busca por \'keyword\' \n"
          << "(4) Voltar\n";
     cin >> acao;
@@ -321,7 +303,7 @@ void tela3()
       break;
     else if (acao == '1')
     {
-      // todo 2.8 - Escolha aleatoria de filme
+      chooseRandomFilme(filmes);
     }
     else if (acao == '2')
     {
@@ -355,11 +337,12 @@ void telaInicial()
   char acao;
   while (true)
   {
-    cout << "(1) Cadastro de novas midias\n"
-         << "(2) Remocao de midias existentes\n"
-         << "(3) Pesquisa de midias\n"
-         << "(4) Sugestao de midias\n"
+    cout << "(1) Cadastro de novas mídias\n"
+         << "(2) Remoção de mídias existentes\n"
+         << "(3) Pesquisa de mídias\n"
+         << "(4) Sugestão de mídias\n"
          << "(5) Sair\n";
+
     cin >> acao;
     if (acao == '5')
       break;
@@ -376,7 +359,25 @@ void telaInicial()
 
 int main()
 {
-  cout << "Bem-vindo ao nosso Sistema de Gerenciamento de Midias\n\n";
+  vector<GeneroDeMusica> generoDeMusica;
+  vector<GeneroDeMusica> generoDeMusica1;
+  vector<FormatoDeAudio> formatoDeAudio;
+  vector<GenerosDeFilme> generoDeFilme;
+  vector<FormatosDeVideo> formatoDeVideo;
+  vector<string> artistas;
+  vector<string> keywords;
+  artistas.push_back("c");
+  artistas.push_back("a");
+  artistas.push_back("b");
+  generoDeMusica.push_back(Rock);
+  generoDeMusica.push_back(Heavy_Metal);
+  generoDeMusica1.push_back(Heavy_Metal);
+  generoDeMusica1.push_back(Blues);
+  musicas.push_back(Musica(formatoDeAudio, generoDeMusica1, "Title", artistas, 123, 0, keywords, 0));
+  musicas.push_back(Musica(formatoDeAudio, generoDeMusica, "ATitle", artistas, 123, 0, keywords, 0));
+  filmes.push_back(Filme(formatoDeVideo, generoDeFilme, "ATitle", artistas, 123, 0, keywords, 0));
+
+  cout << "Bem-vindo ao nosso Sistema de Gerenciamento de Mídias\n\n";
   telaInicial();
   return 0;
 };

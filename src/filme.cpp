@@ -33,7 +33,7 @@ void listFilmesOrderByData(vector<Filme> filmes)
 {
   sort(filmes.begin(), filmes.end(), [](Filme &filme1, Filme &filme2)
        { return filme1.getData() < filme2.getData(); });
-  //printList<Filme>(filmes, "filme");
+  // printList<Filme>(filmes, "filme");
 }
 
 void listArtistasByFilmes(vector<Filme> filmes)
@@ -79,6 +79,22 @@ void countFilmesByGenero(vector<Filme> filmes)
   {
     cout << generoDeFilme[pair.first] << ": " << pair.second << endl;
   }
+}
+
+void chooseRandomFilme(vector<Filme> filmes)
+{
+  if (filmes.size() == 0)
+  {
+    cout << "Nenhum filme cadastrado!" << endl;
+    return;
+  }
+
+  int randomIndex = rand() % filmes.size();
+  Filme randomFilme = filmes[randomIndex];
+
+  cout << "Selelecionando um filme aleatório..." << endl
+       << endl
+       << "Filme escolhido: " << randomFilme.getTitulo() << " (" << randomFilme.getAno() << ")!!" << endl;
 }
 
 #endif
